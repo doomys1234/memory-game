@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="main.bundle.css">
+    <title>MemoryGame</title>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header-wrapper">
+        <a href="" class="header-logo">MemoryGame</a>
+      </div>
+    </header>
+    <main>
+      <div class="list-wrapper is-hidden">
+        <ul class="list">
+        </ul>
+      </div>
+      <div class="form">
+        <h1 class="form__title">Welcome  to the memory  game</h1>
+        <form autocomplete="off">
+          <p class="form__text">Please choose amount of tiles to start the game</p>
+          <div class="form-box">
+        <div class="form-box_wrapper">
+            <input type="radio" id="4" name="amount-of-columns" value="4" checked>
+            <label for="4">4</label>
+        </div>
+        <div class="form-box_wrapper">
+            <input type="radio" id="6" name="amount-of-columns" value="6">
+            <label for="6">6</label>
+        </div>
+        <div class="form-box_wrapper">
+            <input type="radio" id="8" name="amount-of-columns" value="8">
+            <label for="8">8</label>
+        </div>
+          </div>
+          <div class="button-container">
+            <button type="button" class="button-container__submit">
+              Start
+            </button>
+          </div>
+        </form>
+      </div>
+    </main>
+    <script src="./index.js" defer></script>
+  </body>
+</html>
