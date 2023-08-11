@@ -14,54 +14,43 @@ export default class MatchGrid {
     const list = document.querySelector(".list");
     for (let i = 1; i <= this.amountOfTiles; i++) {
       const tile = document.createElement("li");
+      const textValue = this.shuffledArray[i];
+
       tile.classList.add("tile");
       list.appendChild(tile);
+      this.createTextElement(tile, textValue);
     }
   }
 
   makeTilesFlipped() {
     const listItems = document.querySelectorAll(".list .tile");
-    listItems.forEach((tile, index) => {
-      tile.addEventListener("click", () => this.handleTileClick(tile, index));
+    listItems.forEach((tile) => {
+      tile.addEventListener("click", () => this.handleTileClick(tile));
     });
   }
-  handleTileClick(tile, index) {
-    const textElement = tile.querySelector("p.tile-text.is-hidden-text");
-    const textValue = this.shuffledArray[index];
-    const doesTileContainText = textElement !== null;
-    tile.classList.add("flipped");
 
-    if (doesTileContainText) {
-      this.flipTileWithText(tile, textElement);
-    } else {
-      this.flipTileWithoutText(tile, textValue);
-    }
+  handleTileClick(tile) {
+    const textElement = tile.querySelector("p.tile-text.is-hidden-text");
+    this.toggleTileFlipping(tile);
+    this.flipTileWithText(tile, textElement);
   }
   flipTileWithText(tile, textElement) {
-    setTimeout(() => this.showTextContent(textElement), 500);
-    setTimeout(() => this.hideTextContent(tile), 1500);
-    setTimeout(() => this.stopTileFlipping(tile), 2500);
-  }
-  flipTileWithoutText(tile, textValue) {
-    setTimeout(() => this.createTextElement(tile, textValue), 500);
-    setTimeout(() => this.hideTextContent(tile), 1500);
-    setTimeout(() => this.stopTileFlipping(tile), 2500);
+    setTimeout(() => this.toggleTextContent(textElement), 500);
+    setTimeout(() => this.toggleTextContent(textElement), 1500);
+    setTimeout(() => this.toggleTileFlipping(tile), 2500);
   }
   createTextElement(tile, textValue) {
     const textElement = document.createElement("p");
-    textElement.classList.add("tile-text");
+    textElement.classList.add("tile-text", "is-hidden-text");
     textElement.innerText = textValue;
     tile.appendChild(textElement);
   }
-  showTextContent(textElement) {
-    textElement.classList.remove("is-hidden-text");
+
+  toggleTextContent(textElement) {
+    textElement.classList.toggle("is-hidden-text");
   }
-  hideTextContent(tile) {
-    const textElement = tile.querySelector("p.tile-text");
-    textElement.classList.add("is-hidden-text");
-  }
-  stopTileFlipping(tile) {
-    tile.classList.remove("flipped");
+  toggleTileFlipping(tile) {
+    tile.classList.toggle("flipped");
   }
 
   createDynamicArray() {
