@@ -17,6 +17,8 @@
       <div class="list-wrapper is-hidden">
         <ul class="list">
         </ul>
+        <p class="list-wrapper__text is-hidden">Congratulations, you have a good memory! Do you want to try again?</p>
+        <button type="button" class="list-button button-common">Restart</button>
       </div>
       <div class="form">
         <h1 class="form__title">Welcome  to the memory  game</h1>
@@ -24,20 +26,20 @@
           <p class="form__text">Please choose amount of tiles to start the game</p>
           <div class="form-box">
         <div class="form-box_wrapper">
-            <input type="radio" id="4" name="amount-of-columns" value="4" checked>
-            <label for="4">4</label>
-        </div>
-        <div class="form-box_wrapper">
-            <input type="radio" id="6" name="amount-of-columns" value="6">
+            <input type="radio" id="6" name="amount-of-columns" value="6" checked>
             <label for="6">6</label>
         </div>
         <div class="form-box_wrapper">
             <input type="radio" id="8" name="amount-of-columns" value="8">
             <label for="8">8</label>
         </div>
+        <div class="form-box_wrapper">
+            <input type="radio" id="10" name="amount-of-columns" value="10">
+            <label for="10">10</label>
+        </div>
           </div>
           <div class="button-container">
-            <button type="button" class="button-container__submit">
+            <button type="button" class="form-button button-common">
               Start
             </button>
           </div>

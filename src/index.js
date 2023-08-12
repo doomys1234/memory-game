@@ -2,7 +2,7 @@ import './sass/main.scss';
 import MatchGrid from "./js/MatchGrid";
 
 const form = document.querySelector('.form');
-const startButton = document.querySelector('.button-container__submit');
+const startButton = document.querySelector('.form-button.button-common');
 startButton.addEventListener('click', () => {
     const checkedRadio = document.querySelector('input[name="amount-of-columns"]:checked');
     if (!checkedRadio) {

@@ -10,14 +10,6 @@ html {
 
 :root {
   --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-  /* --main-text-color: #212121;
-    --text-color: #757575;
-    --accent-color: #2196f3;
-    --background-color: #f5f4fa;
-    --footer-color: #2f303a;
-    --footer-contacts: rgba(255, 255, 255, 0.6);
-    --main-title: #ffff;
-    --icon-color: #afb1b8; */
 }
 
 body {
@@ -27,6 +19,8 @@ body {
 }
 
 ul {
+  padding: 0;
+  margin: 0;
   list-style: none;
 }
 
@@ -105,8 +99,6 @@ a {
   border: 1px solid rgba(33, 33, 33, 0.2);
   border-radius: 4px;
 
-//   transition: var(--border-animation);
-
   &:focus {
     outline: none;
     border-color: #bce1ff
@@ -118,7 +110,14 @@ a {
     justify-content: center;
 }
 
-.button-container__submit {
+.list-button{
+  align-self: center;
+  width: 200px;
+margin-top: 20px;
+margin-bottom: 20px;
+}
+
+.button-common {
     padding: 10px 56px 10px 56px;
     font-weight: bold;
     line-height: 1.87;
@@ -139,17 +138,20 @@ a {
 //tiles
 
 .list-wrapper {
+  display: flex;
+  flex-direction: column;
   width: 800px;
   margin: 0 auto;
 }
 
 .list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, calc((100% - 60px) / 2));
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   gap: 30px;
   justify-content: center;
   list-style: none;
 }
+
 
 .tile {
   position: relative;
@@ -163,6 +165,7 @@ a {
   transition: transform 0.3s;
   border-radius: 10px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
 
   &:nth-child(3),
   &:nth-child(4) {
@@ -170,7 +173,7 @@ a {
   }
 
   &.flipped {
-    animation: rotate 2 1.5s;
+    animation: rotate 1 0.4s;
   }
 
   &:hover {
@@ -209,7 +212,11 @@ a {
     text-align: center;
     font-size: 70px;
     margin: auto 0;
-    transform: scaleX(-1);
+    cursor: pointer;
+}
+
+.flip-text{
+      transform: scaleX(-1);
 }
 
 //
@@ -219,4 +226,14 @@ a {
 
 .is-hidden-text{
   opacity:0;
+}
+
+.show-matched{
+  transform: scale(1.2);
+}
+
+.list-wrapper__text{
+  text-align: center;
+  font-size: 40px;
+    margin: auto 0;
 }
