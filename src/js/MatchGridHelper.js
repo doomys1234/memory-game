@@ -1,7 +1,7 @@
 export default class MatchGridHelper {
-  constructor(parentSelector, amountOfTiles, timer) {
-    this.timer = timer
-    this.parent = document.querySelector(parentSelector);
+  constructor(amountOfTiles, timer) {
+    this.timer = timer;
+    // this.parent = document.querySelector(parentSelector);
     this.amountOfTiles = amountOfTiles;
   }
 
@@ -23,6 +23,11 @@ export default class MatchGridHelper {
   getElementByClassName(className, parent = document) {
     return parent.querySelector(className);
   }
+
+  getElementsByClassName(className, parent = document) {
+    return parent.querySelectorAll(className);
+  }
+
   toggleClassName(element, className) {
     element.classList.toggle(className);
   }
@@ -32,7 +37,7 @@ export default class MatchGridHelper {
     const halfLength = length / 2;
     const dynamicArray = [];
 
-    for (let i = 1; i <= length; i++) {
+    for (let i = 1; i <= length; i += 1) {
       dynamicArray.push(((i - 1) % halfLength) + 1);
     }
 
@@ -41,12 +46,12 @@ export default class MatchGridHelper {
 
   getShuffledContent() {
     const array = this.createDynamicContent();
-    let currentIndex = array.length,
-      randomIndex;
+    let currentIndex = array.length;
+    let randomIndex;
 
-    while (currentIndex != 0) {
+    while (currentIndex !== 0) {
       randomIndex = Math.floor(Math.random() * currentIndex);
-      currentIndex--;
+      currentIndex -= 1;
       [array[currentIndex], array[randomIndex]] = [
         array[randomIndex],
         array[currentIndex],
@@ -57,7 +62,7 @@ export default class MatchGridHelper {
 
   adjustTime() {
     if (this.timer === '30') {
-      return 0.5
+      return 0.5;
     }
     return +this.timer;
   }

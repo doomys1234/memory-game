@@ -1,11 +1,12 @@
-import MatchGridHelper from "./MatchGridHelper";
+import MatchGridHelper from './MatchGridHelper';
+
 export default class Timer extends MatchGridHelper {
-    constructor({ durationMinutes, onFinish }) {
-    super(".list");
+  constructor({ durationMinutes, onFinish }) {
+    super('.list');
     this.durationMilliseconds = durationMinutes * 60 * 1000;
     this.timerID = null;
-    this.finished = false;  
-    this.onFinish= onFinish
+    this.finished = false;
+    this.onFinish = onFinish;
   }
 
   getRefs() {
@@ -25,7 +26,7 @@ export default class Timer extends MatchGridHelper {
     return String(value).padStart(2, '0');
   }
 
-    startInterval({ minsValue, secsValue }) {
+  startInterval({ minsValue, secsValue }) {
     this.timerID = setInterval(() => {
       this.durationMilliseconds -= 1000;
       const timeResult = this.getTime(this.durationMilliseconds);
@@ -33,16 +34,19 @@ export default class Timer extends MatchGridHelper {
       secsValue.textContent = `${timeResult.secs} `;
 
       if (this.durationMilliseconds < 0) {
-        clearInterval(this.timerID);
-        minsValue.textContent = '00 ';
-          secsValue.textContent = '00 ';
-          this.finished = true
-          if (this.onFinish && this.finished) {
-                    this.onFinish();
-                }
+        this.stopTimer();
+        this.finished = true;
+        if (this.onFinish && this.finished) {
+          this.onFinish();
+        }
       }
     }, 1000);
-        
-    }
-}
+  }
 
+  stopTimer() {
+    const { minsValue, secsValue } = this.getRefs();
+    clearInterval(this.timerID);
+    minsValue.textContent = '00 ';
+    secsValue.textContent = '00 ';
+  }
+}

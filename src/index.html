@@ -4,6 +4,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Ubuntu&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="main.bundle.css">
     <title>MemoryGame</title>
   </head>
@@ -40,7 +43,7 @@
           <p class="form__text">Please choose amount of rows</p>
           <div class="form-box">
         <div class="form-box_wrapper">
-            <input type="radio" id="2rows" name="amount-of-rows" value="2" checked>
+            <input type="radio" id="2rows" name="amount-of-rows" value="2">
             <label for="2">2</label>
         </div>
         <div class="form-box_wrapper">
@@ -55,7 +58,7 @@
           <p class="form__text">Please choose amount of columns</p>
           <div class="form-box">
             <div class="form-box_wrapper">
-              <input type="radio" id="2columns" name="amount-of-columns" value="2" checked>
+              <input type="radio" id="2columns" name="amount-of-columns" value="2">
               <label for="2">2</label>
             </div>
             <div class="form-box_wrapper">
@@ -70,7 +73,7 @@
           <p class="form__text">Please set the timer</p>
           <div class="form-box">
             <div class="form-box_wrapper">
-              <input type="radio" id="30seconds" name="time" value="30" checked>
+              <input type="radio" id="30seconds" name="time" value="30">
               <label for="30seconds">30 seconds</label>
             </div>
             <div class="form-box_wrapper">
@@ -90,6 +93,20 @@
         </form>
       </div>
     </main>
+    <footer class="footer">
+        <span class="footer-label">
+          © Developped by
+          <a
+            href="https://github.com/doomys1234"
+            class="footer-link"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub Profile"
+          >
+            Maksym Rydenko
+          </a>
+        </span>
+      </footer>
     <script src="./index.js" defer></script>
   </body>
 </html>
