@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&family=Ubuntu&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="main.bundle.css">
+    <title>MemoryGame</title>
+  <script defer src="main.bundle.js"></script></head>
+  <body>
+    <header class="header">
+      <div class="header-wrapper">
+        <a href="" class="header-logo">MemoryGame</a>
+        <div class="timer" id="timer-1">
+          <div class="field field__sep">
+          <div>
+            <span class="value" data-value="mins">00</span>
+            <span class="label">Minutes</span>
+          </div>
+            <span class="separator">:</span>
+          </div>
+          <div class="field">
+            <span class="value" data-value="secs">00</span>
+            <span class="label">Seconds</span>
+          </div>
+        </div>
+      </div>
+      
+    </header>
+    <main>
+      <div class="list-wrapper is-hidden">
+        <ul class="list">
+        </ul>
+        <p class="list-wrapper__text is-hidden">Congratulations, you have a good memory! Do you want to try again?</p>
+        <button type="button" class="list-button button-common">Restart</button>
+      </div>
+      <div class="form">
+        <h1 class="form__title">Welcome  to the memory  game</h1>
+        <form autocomplete="off">
+          <p class="form__text">Please choose amount of rows</p>
+          <div class="form-box">
+        <div class="form-box_wrapper">
+            <input type="radio" id="2rows" name="amount-of-rows" value="2">
+            <label for="2">2</label>
+        </div>
+        <div class="form-box_wrapper">
+            <input type="radio" id="4rows" name="amount-of-rows" value="4">
+            <label for="4">4</label>
+        </div>
+        <div class="form-box_wrapper">
+            <input type="radio" id="6rows" name="amount-of-rows" value="6">
+            <label for="6">6</label>
+        </div>
+          </div>
+          <p class="form__text">Please choose amount of columns</p>
+          <div class="form-box">
+            <div class="form-box_wrapper">
+              <input type="radio" id="2columns" name="amount-of-columns" value="2">
+              <label for="2">2</label>
+            </div>
+            <div class="form-box_wrapper">
+              <input type="radio" id="4columns" name="amount-of-columns" value="4">
+              <label for="4">4</label>
+            </div>
+            <div class="form-box_wrapper">
+              <input type="radio" id="6columns" name="amount-of-columns" value="6">
+              <label for="6">6</label>
+            </div>
+          </div>
+          <p class="form__text">Please set the timer</p>
+          <div class="form-box">
+            <div class="form-box_wrapper">
+              <input type="radio" id="30seconds" name="time" value="30">
+              <label for="30seconds">30 seconds</label>
+            </div>
+            <div class="form-box_wrapper">
+              <input type="radio" id="1minute" name="time" value="1">
+              <label for="1minute">1 minute</label>
+            </div>
+            <div class="form-box_wrapper">
+              <input type="radio" id="2minutes" name="time" value="2">
+              <label for="2minutes">2 minutes</label>
+            </div>
+          </div>
+          <div class="button-container">
+            <button type="button" class="form-button button-common">
+              Start
+            </button>
+          </div>
+        </form>
+      </div>
+    </main>
+    <footer class="footer">
+        <span class="footer-label">
+          © Developped by
+          <a
+            href="https://github.com/doomys1234"
+            class="footer-link"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub Profile"
+          >
+            Maksym Rydenko
+          </a>
+        </span>
+      </footer>
+    <script src="./index.js" defer></script>
+  </body>
+</html>
