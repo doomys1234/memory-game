@@ -1,8 +1,11 @@
 import MatchGridHelper from "./MatchGridHelper";
+import Timer from "./Timer";
 export default class MatchGrid extends MatchGridHelper {
-  constructor({ amountOfTiles }) {
-    super(".list", amountOfTiles);
+  constructor({ amountOfTiles, timer }) {
+    super(".list", amountOfTiles, timer);
+    this.listItems = document.querySelectorAll(".list .tile");
     this.amountOfTiles = amountOfTiles;
+    this.timer = this.adjustTime();
     this.shuffledArray = this.getShuffledContent();
     this.firstElement = null;
     this.secondElement = null;
@@ -14,6 +17,30 @@ export default class MatchGrid extends MatchGridHelper {
   startGame() {
     this.createTileElements();
     this.makeTilesFlipped();
+    const timer = new Timer({
+      durationMinutes: this.timer,
+      onFinish: this.finishGame.bind(this),
+    });
+    timer.startInterval(timer.getRefs());
+  }
+  restartGame() {
+    const listItems = document.querySelectorAll(".tile.flipped.is-hidden");
+    this.clearState(true);
+    const textElements = document.querySelectorAll(
+      ".tile-text:not(.is-hidden-text)"
+    );
+    textElements.forEach((textElement) =>
+      this.toggleClassName(textElement, "is-hidden-text")
+    );
+    listItems.forEach((tile) => {
+      this.toggleClassName(tile, "flipped");
+      this.toggleClassName(tile, "is-hidden");
+    });
+    this.shuffledArray = this.getShuffledContent();
+  }
+  finishGame() {
+    alert("Time's up!");
+    this.restartGame();
   }
 
   createTileElements() {

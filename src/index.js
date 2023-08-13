@@ -1,21 +1,27 @@
-import './sass/main.scss';
 import MatchGrid from "./js/MatchGrid";
+import './sass/main.scss';
+
 
 const form = document.querySelector('.form');
 const startButton = document.querySelector('.form-button.button-common');
+const restartButton = document.querySelector(".list-button.button-common");
+const checkedColumns = document.querySelector('input[name="amount-of-columns"]:checked');
+const checkedRows = document.querySelector('input[name="amount-of-rows"]:checked');
+const checkedTime = document.querySelector('input[name="time"]:checked');
+const { value: amountOfColumns } = checkedColumns;
+const { value: amountOfRows } = checkedRows;
+const { value: timer } = checkedTime;
+const totalAmountOfElements = +amountOfColumns * +amountOfRows;
+const matchGridGame = new MatchGrid({ amountOfTiles: totalAmountOfElements, timer });
 startButton.addEventListener('click', () => {
-    const checkedRadio = document.querySelector('input[name="amount-of-columns"]:checked');
-    if (!checkedRadio) {
-    alert('Please select a value.');
-    return
-}
-    const selectedValue = checkedRadio.value;
-    const matchGrid = new MatchGrid({ amountOfTiles: +selectedValue });
-    matchGrid.startGame();
+    matchGridGame.startGame();
     const listBox = document.querySelector('.list-wrapper');
     listBox.classList.remove('is-hidden');
     form.classList.add('is-hidden');
 
+})
+restartButton.addEventListener('click', () => {
+    matchGridGame.restartGame();
 })
 
 

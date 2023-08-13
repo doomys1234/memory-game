@@ -1,5 +1,6 @@
 export default class MatchGridHelper {
-  constructor(parentSelector, amountOfTiles) {
+  constructor(parentSelector, amountOfTiles, timer) {
+    this.timer = timer
     this.parent = document.querySelector(parentSelector);
     this.amountOfTiles = amountOfTiles;
   }
@@ -52,5 +53,12 @@ export default class MatchGridHelper {
       ];
     }
     return array;
+  }
+
+  adjustTime() {
+    if (this.timer === '30') {
+      return 0.5
+    }
+    return +this.timer;
   }
 }
