@@ -51,6 +51,7 @@ export default class MatchGrid extends MatchGridHelper {
       this.toggleClassName(tile, 'is-hidden');
     });
     this.shuffledArray = this.getShuffledContent();
+    this.gameTimer.stopTimer();
     this.startTimer();
   }
 
