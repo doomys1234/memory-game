@@ -7,6 +7,7 @@ export default class Timer extends MatchGridHelper {
     this.timerID = null;
     this.finished = false;
     this.onFinish = onFinish;
+    this.paused = false;
   }
 
   getRefs() {
@@ -27,26 +28,34 @@ export default class Timer extends MatchGridHelper {
   }
 
   startInterval({ minsValue, secsValue }) {
-    this.timerID = setInterval(() => {
-      this.durationMilliseconds -= 1000;
-      const timeResult = this.getTime(this.durationMilliseconds);
-      minsValue.textContent = `${timeResult.mins} `;
-      secsValue.textContent = `${timeResult.secs} `;
+    if (!this.paused) {
+      this.timerID = setInterval(() => {
+        this.durationMilliseconds -= 1000;
+        const timeResult = this.getTime(this.durationMilliseconds);
+        minsValue.textContent = `${timeResult.mins} `;
+        secsValue.textContent = `${timeResult.secs} `;
 
-      if (this.durationMilliseconds < 0) {
-        this.stopTimer();
-        this.finished = true;
-        if (this.onFinish && this.finished) {
-          this.onFinish();
+        if (this.durationMilliseconds < 0) {
+          this.stopTimer();
+          this.finished = true;
+          if (this.onFinish && this.finished) {
+            this.onFinish();
+          }
         }
-      }
-    }, 1000);
+      }, 1000);
+    }
   }
 
-  stopTimer() {
-    const { minsValue, secsValue } = this.getRefs();
+  pauseTimer() {
     clearInterval(this.timerID);
-    minsValue.textContent = '00 ';
-    secsValue.textContent = '00 ';
+    this.paused = true;
+  }
+
+  resumeTimer() {
+    if (this.paused) {
+      const { minsValue, secsValue } = this.getRefs();
+      this.paused = false;
+      this.startInterval({ minsValue, secsValue });
+    }
   }
 }

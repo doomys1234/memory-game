@@ -5,6 +5,12 @@ const form = document.querySelector('.form');
 const startButton = document.querySelector('.form-button.button-common');
 const restartButton = document.querySelector('.list-button.button-common');
 
+let timeout;
+
+function debounceMouseMove(fn, delay) {
+  clearTimeout(timeout);
+  timeout = setTimeout(fn, delay);
+}
 startButton.addEventListener('click', () => {
   const checkedColumns = document.querySelector(
     'input[name="amount-of-columns"]:checked',
@@ -33,5 +39,11 @@ startButton.addEventListener('click', () => {
   form.classList.add('is-hidden');
   restartButton.addEventListener('click', () => {
     matchGridGame.restartGame();
+  });
+
+  // Pause the timer for inactivity
+  document.addEventListener('mousemove', () => {
+    debounceMouseMove(matchGridGame.pauseTheGame(), 3000);
+    matchGridGame.unPauseTheGame();
   });
 });

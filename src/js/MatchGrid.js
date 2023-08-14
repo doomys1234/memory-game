@@ -55,6 +55,14 @@ export default class MatchGrid extends MatchGridHelper {
     this.startTimer();
   }
 
+  pauseTheGame() {
+    this.gameTimer.pauseTimer();
+  }
+
+  unPauseTheGame() {
+    this.gameTimer.resumeTimer();
+  }
+
   stopTimerOnFinish() {
     alert("Time's up!");
     this.restartGame();
