@@ -58,4 +58,11 @@ export default class Timer extends MatchGridHelper {
       this.startInterval({ minsValue, secsValue });
     }
   }
+
+  stopTimer() {
+    const { minsValue, secsValue } = this.getRefs();
+    clearInterval(this.timerID);
+    minsValue.textContent = '00 ';
+    secsValue.textContent = '00 ';
+  }
 }

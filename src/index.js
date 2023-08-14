@@ -41,9 +41,12 @@ startButton.addEventListener('click', () => {
     matchGridGame.restartGame();
   });
 
+  function performAction() {
+    matchGridGame.pauseTheGame();
+  }
   // Pause the timer for inactivity
   document.addEventListener('mousemove', () => {
-    debounceMouseMove(matchGridGame.pauseTheGame(), 3000);
+    debounceMouseMove(performAction, 3000);
     matchGridGame.unPauseTheGame();
   });
 });
